@@ -4,3 +4,5 @@
 .Ruserdata
 iTunes cupboard.xlsx
 config.yaml
+.secrets
+.Rprofile

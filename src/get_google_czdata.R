@@ -18,8 +18,7 @@ config <- read_yaml("config.yaml")
 
 # downloads GD ------------------------------------------------------------
 
-# aanmelden bij GD
-drive_auth(path = key_get(service = "cz-sheets-processing", username = "access-token"))
+# aanmelden bij GD loopt via de procedure die beschreven is in "Operation Missa > Voortgang > 4.Toegangsrechten GD".
 
 # Roosters 3.0 ophalen bij GD
 path_roosters <- paste0(config$gs_downloads, "/", "roosters.xlsx")
@@ -35,9 +34,16 @@ drive_download(file = cz_get_url("wordpress_gidsinfo"), overwrite = T, path = pa
 
 # sheets als df -----------------------------------------------------------
 
-tbl_presentatie <- cz_extract_sheet(path_roosters, sheet_name = "presentatie")
-tbl_montage <- cz_extract_sheet(path_roosters, sheet_name = "montage")
-tbl_zenderschema <- cz_extract_sheet(path_roosters, sheet_name = paste0("modelrooster-", config$modelrooster_versie))
-tbl_itunes_cupboard <- cz_extract_sheet(path_itunes_cupboard, sheet_name = "playlist_names")
-tbl_gidsinfo <- cz_extract_sheet(path_wp_gidsinfo, sheet_name = "gids-info")
-tbl_gidsinfo_nl_en <- cz_extract_sheet(path_wp_gidsinfo, sheet_name = "vertalingen NL-EN")
+tbl_raw_presentatie <- cz_extract_sheet(path_roosters, sheet_name = "presentatie")
+tbl_raw_montage <- cz_extract_sheet(path_roosters, sheet_name = "montage")
+tbl_raw_zenderschema <- cz_extract_sheet(path_roosters, sheet_name = paste0("modelrooster-", config$modelrooster_versie))
+tbl_raw_itunes_cupboard <- cz_extract_sheet(path_itunes_cupboard, sheet_name = "playlist_names")
+tbl_raw_gidsinfo <- cz_extract_sheet(path_wp_gidsinfo, sheet_name = "gids-info")
+tbl_raw_gidsinfo_nl_en <- cz_extract_sheet(path_wp_gidsinfo, sheet_name = "vertalingen NL-EN")
+
+saveRDS(tbl_presentatie, file = paste0(config$cz_rds_store, "presentatie.RDS"))
+saveRDS(tbl_montage, file = paste0(config$cz_rds_store, "montage.RDS"))
+saveRDS(tbl_zenderschema, file = paste0(config$cz_rds_store, "zenderschema.RDS"))
+saveRDS(tbl_itunes_cupboard, file = paste0(config$cz_rds_store, "itunes_cupboard.RDS"))
+saveRDS(tbl_gidsinfo, file = paste0(config$cz_rds_store, "gidsinfo.RDS"))
+saveRDS(tbl_gidsinfo_nl_en, file = paste0(config$cz_rds_store, "gidsinfo_nl_en.RDS"))
