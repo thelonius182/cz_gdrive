@@ -45,6 +45,8 @@ tbl_raw_wpgidsinfo_nl_en <- cz_extract_sheet(path_wp_gidsinfo, sheet_name = "ver
 
 source("src/refactor_raw_tables.R")
 
+# persist refactored tbles ------------------------------------------------
+
 saveRDS(tbl_zenderschema, file = paste0(config$cz_rds_store, "zenderschema.RDS"))
 saveRDS(tbl_presentatie, file = paste0(config$cz_rds_store, "presentatie.RDS"))
 saveRDS(tbl_montage, file = paste0(config$cz_rds_store, "montage.RDS"))
