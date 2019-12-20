@@ -41,6 +41,8 @@ tbl_raw_itunes_cupboard <- cz_extract_sheet(path_itunes_cupboard, sheet_name = "
 tbl_raw_wpgidsinfo <- cz_extract_sheet(path_wp_gidsinfo, sheet_name = "gids-info")
 tbl_raw_wpgidsinfo_nl_en <- cz_extract_sheet(path_wp_gidsinfo, sheet_name = "vertalingen NL-EN")
 
+# refactor raw tables -----------------------------------------------------
+
 source("src/refactor_raw_tables.R")
 
 saveRDS(tbl_zenderschema, file = paste0(config$cz_rds_store, "zenderschema.RDS"))
