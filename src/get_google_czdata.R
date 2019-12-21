@@ -34,9 +34,9 @@ drive_download(file = cz_get_url("wordpress_gidsinfo"), overwrite = T, path = pa
 
 # sheets als df -----------------------------------------------------------
 
+tbl_raw_zenderschema <- cz_extract_sheet(path_roosters, sheet_name = paste0("modelrooster-", config$modelrooster_versie))
 tbl_raw_presentatie <- cz_extract_sheet(path_roosters, sheet_name = "presentatie")
 tbl_raw_montage <- cz_extract_sheet(path_roosters, sheet_name = "montage")
-tbl_raw_zenderschema <- cz_extract_sheet(path_roosters, sheet_name = paste0("modelrooster-", config$modelrooster_versie))
 tbl_raw_itunes_cupboard <- cz_extract_sheet(path_itunes_cupboard, sheet_name = "playlist_names")
 tbl_raw_wpgidsinfo <- cz_extract_sheet(path_wp_gidsinfo, sheet_name = "gids-info")
 tbl_raw_wpgidsinfo_nl_en <- cz_extract_sheet(path_wp_gidsinfo, sheet_name = "vertalingen NL-EN")
