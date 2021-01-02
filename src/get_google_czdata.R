@@ -69,3 +69,5 @@ saveRDS(tbl_nipper_playlists, file = paste0(config$cz_rds_store, "nipper_playlis
 saveRDS(tbl_nipper_select, file = paste0(config$cz_rds_store, "nipper_select.RDS"))
 saveRDS(tbl_nipper_keys, file = paste0(config$cz_rds_store, "nipper_keys.RDS"))
 saveRDS(tbl_nipper_audiolocaties, file = paste0(config$cz_rds_store, "nipper_audiolocaties.RDS"))
+
+# finished
