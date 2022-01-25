@@ -1,7 +1,7 @@
-library(googledrive)
-library(keyring)
-library(readxl)
-library(yaml)
+suppressPackageStartupMessages(suppressWarnings(library(googledrive)))
+suppressPackageStartupMessages(suppressWarnings(library(keyring)))
+suppressPackageStartupMessages(suppressWarnings(library(readxl)))
+suppressPackageStartupMessages(suppressWarnings(library(yaml)))
 
 cz_extract_sheet <- function(ss_name, sheet_name) {
   read_xlsx(ss_name,
@@ -16,7 +16,7 @@ cz_get_url <- function(cz_ss) {
   paste0("https://", config$url_pfx, config[[cz_url]]) 
 }
 
-config <- read_yaml("config.yaml")
+config <- read_yaml("config_nip_nxt.yaml")
 
 # downloads GD ------------------------------------------------------------
 
@@ -29,14 +29,14 @@ drive_download(file = cz_get_url("nipper_next"), overwrite = T, path = path_wp_n
 
 # sheets als df -----------------------------------------------------------
 
-tbl_nipper_playlists <- cz_extract_sheet(path_wp_nipper_next, sheet_name = "playlists")
-tbl_nipper_muw <- cz_extract_sheet(path_wp_nipper_next, sheet_name = "muziekweb")
-tbl_nipper_select <- cz_extract_sheet(path_wp_nipper_next, sheet_name = "nipper-select")
+tbl_nipper_nxt_playlists <- cz_extract_sheet(path_wp_nipper_next, sheet_name = "playlists")
+tbl_nipper_nxt_muw <- cz_extract_sheet(path_wp_nipper_next, sheet_name = "muziekweb")
+tbl_nipper_nxt_select <- cz_extract_sheet(path_wp_nipper_next, sheet_name = "nipper-select")
 
 # persist refactored tbles ------------------------------------------------
 
-saveRDS(tbl_nipper_playlists, file = paste0(config$cz_rds_store, "nipper_playlists.RDS"))
-saveRDS(tbl_nipper_muw, file = paste0(config$cz_rds_store, "nipper_muziekweb.RDS"))
-saveRDS(tbl_nipper_select, file = paste0(config$cz_rds_store, "nipper_select.RDS"))
+saveRDS(tbl_nipper_nxt_playlists, file = paste0(config$cz_rds_store, "nipper_playlists.RDS"))
+saveRDS(tbl_nipper_nxt_muw, file = paste0(config$cz_rds_store, "nipper_muziekweb.RDS"))
+saveRDS(tbl_nipper_nxt_select, file = paste0(config$cz_rds_store, "nipper_select.RDS"))
 
 # finished

@@ -7,3 +7,4 @@ config.yaml
 .secrets
 .Rprofile
 .httr-oauth
+config_nip_nxt.yaml
