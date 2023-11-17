@@ -1,7 +1,4 @@
-library(googledrive)
-library(keyring)
-library(readxl)
-library(yaml)
+pacman::p_load(googledrive, keyring, readxl, yaml)
 
 cz_extract_sheet <- function(ss_name, sheet_name) {
   read_xlsx(ss_name,
